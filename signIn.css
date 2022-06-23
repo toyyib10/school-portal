@@ -1,0 +1,26 @@
+html{
+  background-color: rgba(200, 218, 217, 0.76);
+  margin: none;
+  padding: none;
+}
+.inp{
+  border: none;
+  width: 270px;
+  height: 40px;
+  border-radius: 5px;
+  background-color:white;
+  padding: 5px;
+  font-size: 1.5em;
+  margin-bottom: 30px;
+}
+.but{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 2em;
+  border: none;
+  border-radius: 5px;
+  background-color: white;
+} 
+.hed{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  font-size: 3em;
+}

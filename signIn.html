@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="signIn.css">
+</head>
+<body align="center" onload="getInfo()">
+  <h1 class="hed" align="center">Login to School Portal</h1>
+  <form action="">
+    <input class="inp" id="email" placeholder="Email" type="email">
+  </form>
+  <form action="">
+    <input class="inp" id="password" placeholder="Password" type="password">
+  </form>
+  <button onclick="signIn()" class="but">Sign In</button>
+  <script>
+    var myInfo = []
+    function getInfo(){
+      myInfo = JSON.parse(localStorage.getItem('registeredInfo'))
+    }
+    function signIn(){
+      var eml = email.value;
+      var pwd = password.value;
+      for (let i = 0; i < myInfo.length; i++){
+        if (eml == myInfo[i].em && pwd == myInfo[i].pWd){
+          alert('working')
+        }
+        else{
+          alert('Incorrect Password Or Email')
+        }
+      }
+    }
+  </script>
+</body>
+</html>

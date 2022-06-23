@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body onload="loader()">
+  <section>
+    <h1 class="hed" align="center">Create School Portal account</h1>
+    <section class="secOne">
+      <div >
+        <form action="">
+            <input class="inp" id="firstName" placeholder="First Name" type="text">
+        </form>
+        <form action="">
+            <input class="inp" id="lastName" placeholder="Last Name" type="text">
+        </form>
+        <form action="">
+            <input class="inp" id="phoneNumber" placeholder="Phone Number" type="number">
+        </form>
+      </div>
+      <div>
+          <form action="">
+            <input class="inp" id="dte" placeholder="Date of  Birth" type="date">
+          </form>
+          <form action="">
+              <input class="inp" id="email" placeholder="Email" type="email">
+          </form>
+          <form action="">
+              <input class="inp" id="password" placeholder="Password" type="password">
+          </form>
+      </div>
+      <button onclick="register()" class="but">Sign Up</button>
+    </section>
+  <!-- <section style="background-color: white; margin-top:30px;"> -->
+    <!-- <table border="1" align="center" id="tab"></table> -->
+  <!-- </section> -->
+  <script>
+    var myInfo = []
+    function loader(){
+      if (localStorage.registeredInfo){
+        myInfo = JSON.parse(localStorage.getItem("registeredInfo"))
+      }
+    }
+    function register(){
+      var fName = firstName.value;
+      var lName = lastName.value;
+      var pN = phoneNumber.value;
+      var dt = dte.value;
+      var eml = email.value;
+      var pwd = password.value;
+      //var t =`<tr>
+        //  <td>S/N</td>
+         // <td>Fisrt Name</td>
+          //<td>Last Name</td>
+          //<td>Phone Number</td>
+          //<td>Date of Birth</td>
+          //<td>Email</td>
+          //<td>Password</td>
+        //</tr>`
+      if (fName == '' || lName == '' || pN == '' || dt == '' || eml == '' || pwd == ''){
+        alert('Complete the information')
+      }
+      else{
+        var info = {
+          ftName : fName,
+          ltName : lName,
+          pNum : pN,
+          dat : dt,
+          em : eml,
+          pWd : pwd
+        } 
+        myInfo.push(info)
+        localStorage.setItem("registeredInfo",JSON.stringify(myInfo))
+        // for (let i = 0; i < myInfo.length; i++){
+        //   t +=`<tr><td>${i + 1}</td><td>${myInfo[i].ftName}</td><td>${myInfo[i].ltName}</td><td>${myInfo[i].pNum}</td><td>${myInfo[i].dat}</td><td>${myInfo[i].em}</td><td>${myInfo[i].pWd}</td></tr>`
+        // }
+        alert('Registration Successful')
+        //tab.innerHTML = t;
+        firstName.value = '';
+        lastName.value = '';
+        phoneNumber.value = '';
+        dte.value = '';
+        email.value = '';
+        password.value = '';
+        window.location.href = 'signIn.html'
+      }
+    }
+  </script>
+</body>
+</html>
