@@ -25,11 +25,21 @@
       var eml = email.value;
       var pwd = password.value;
       for (let i = 0; i < myInfo.length; i++){
+        console.log(myInfo[i].pWd + myInfo[i].em)
         if (eml == myInfo[i].em && pwd == myInfo[i].pWd){
-          alert('working')
+          alert(`Welcome ${myInfo[i].ltName}`)
+          email.value = '';
+          password.value = '';
+          break
+        }
+        else if(eml == myInfo[i].em || pwd == myInfo[i].pWd){
+          alert('Incorrect Email or Password')
+          break
         }
         else{
-          alert('Incorrect Password Or Email')
+          alert('The account does not exist')
+          break
+
         }
       }
     }
