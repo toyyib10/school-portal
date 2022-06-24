@@ -9,6 +9,7 @@ html{
 }
 .secOne{
   display: flex;
+  margin-top: -20px;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
@@ -18,19 +19,18 @@ html{
 .inp{
   border: none;
   width: 200px;
-  height: 40px;
+  height: 30px;
   border-radius: 5px;
   background-color:white;
   padding: 5px;
   font-size: 1.5em;
-  margin-bottom: 30px;
 }
 .but{
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 1.5em;
   border: none;
   border-radius: 5px;
-  background-color: white;
+  margin-top:20px; 
   margin-left:40%; 
   margin-right:40%;
 }
