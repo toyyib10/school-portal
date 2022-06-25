@@ -9,10 +9,11 @@
     <link href="schoolDashboard.css" rel="stylesheet">
     <link rel="stylesheet" href="dashboard.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/dashboard/">
-    <script src="dashboard.js"></script>
+    <link rel="stylesheet" href="signIn.css">
     <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="dashboard.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <title>School Dashboard</title>    
+    <title>Change Details</title>    
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -66,7 +67,7 @@
       }
     </style>
   </head>
-  <body>
+  <body onload="getInfo()">
     <header class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow" style="background-color:rgb(48, 138, 163);">
       <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#">School Portal</a>
       <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
@@ -85,7 +86,7 @@
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
+            <a class="nav-link active" aria-current="page" href="schoolDashboard.html">
               <span data-feather="home" class="align-text-bottom"></span>
               Home
             </a>
@@ -127,7 +128,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a style="color:rgb(48, 138, 163);" class="nav-link" href="changeDetails.html">
+            <a style="color:rgb(48, 138, 163);" class="nav-link" href="#">
               <span data-feather="layers" class="align-text-bottom"></span>
               Change Details
             </a>
@@ -141,9 +142,61 @@
         <h1 style="color:rgb(48, 138, 163);" class="h2">School</h1>
       </div>
       <div>
-      </div>
+        <h2 style="color:rgb(48, 138, 163);">Change Email , Password</h2>
+        <div>
+            <form action="">
+                <input class="inp" id="currentEmail" placeholder="Current Email" type="email">
+              </form>
+              <form action="">
+                <input class="inp" id="currentPassword" placeholder="Current Password" type="password">
+              </form>
+              <h3 style="color:rgb(48, 138, 163);">New Email And Password</h3>
+              <form action="">
+                <input class="inp" id="newEmail" placeholder="New Email" type="email">
+              </form>
+              <form action="">
+                <input class="inp" id="newPassword" placeholder="New Password" type="password">
+              </form>
+              <button onclick="change()" class="but">Change </button>
+        </div>
+      </divn
     </main>
   </div>
 </div>
-  </body>
+<script>
+  function getInfo(){
+    myInfo = JSON.parse(localStorage.getItem('registeredInfo'))
+  }
+  function change(){
+    var cemail = currentEmail.value;
+    var cpwd = currentPassword.value;
+    var nemail = newEmail.value;
+    var npwd = newPassword.value; 
+    if(cpwd == '' && npwd == ''){
+      alert('Input current Password and new Password')
+    }
+    else{
+      for (i = 0; i < myInfo.length; i++){
+        if (cemail == myInfo[i].em && cpwd == myInfo[i].pWd){
+          myInfo[i] = {
+            ftName : myInfo[i].ftName,
+            ltName : myInfo[i].ltName,
+            pNum : myInfo[i].pNum,
+            dat : myInfo[i].dat,
+            em : nemail,
+            pWd : npwd
+          } 
+          currentEmail.value = '';
+          currentPassword.value = '';
+          newEmail.value = '';
+          newPassword.value = '';
+          alert('Successfully Changed')
+          break
+        }
+      }
+      localStorage.registeredInfo = JSON.stringify(myInfo)
+    }
+  }
+</script>
+</body>
 </html>
