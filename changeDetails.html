@@ -137,7 +137,7 @@
       </div>
     </nav>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4" align='center'>
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 style="color:rgb(48, 138, 163);" class="h2">School</h1>
       </div>
@@ -159,7 +159,19 @@
               </form>
               <button onclick="change()" class="but">Change </button>
         </div>
-      </divn
+      </div>
+      <div style="margin-top:30px; margin-bottom:20px;">
+        <h1 style="color:rgb(48, 138, 163);">
+          Delete account
+        </h1>
+        <form action="">
+          <input class="inp" id='deleteEmail' placeholder="Email" type="email">
+        </form>
+        <form action="">
+          <input class="inp" id='deletePassword' placeholder="password" type="email">
+        </form>
+        <button onclick="deleteAccount()" class="but">Change </button>
+      </div>
     </main>
   </div>
 </div>
@@ -190,11 +202,23 @@
           currentPassword.value = '';
           newEmail.value = '';
           newPassword.value = '';
-          alert('Successfully Changed')
-          break
         }
       }
       localStorage.registeredInfo = JSON.stringify(myInfo)
+      alert('Successfully Changed')
+      window.location.href = 'schoolDashboard.html'
+    }
+  }
+  function deleteAccount() {
+    var delEml = deleteEmail.value;
+    var delPwd = deletePassword.value;
+    for (i = 0; i < myInfo.length; i++){
+      if (delEml == myInfo[i].em && delPwd ==myInfo[i].pWd){
+        myInfo.splice(i,1)
+        alert('account has been successfully deleted')
+        localStorage.registeredInfo = JSON.stringify(myInfo)
+        window.location.href = 'signup.html'
+      }
     }
   }
 </script>

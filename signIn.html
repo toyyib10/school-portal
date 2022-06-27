@@ -25,18 +25,27 @@
     function signIn(){
       var eml = email.value;
       var pwd = password.value;
+      var copyInfo = false
       for (let i = 0; i < myInfo.length; i++){
-        console.log(myInfo[i].pWd + myInfo[i].em)
         if (eml == myInfo[i].em && pwd == myInfo[i].pWd){
           alert(`Welcome ${myInfo[i].ltName}`)
           email.value = '';
           password.value = '';
-          window.location.href = 'schoolDashboard.html';
-        }
-        else if(eml == myInfo[i].em || pwd == myInfo[i].pWd){
-          alert('Incorrect Email or Password')
+          copyInfo = true
           break
         }
+        else if(eml == myInfo[i].em || pwd == myInfo[i].pWd){
+          copyInfo = 'right'
+        }
+      }
+      if (copyInfo == true){
+        window.location.href = 'schoolDashboard.html';
+      }
+      else if(copyInfo == 'right'){
+        alert('incorrect email or password')
+      }
+      else{
+          alert('account does not exist')
       }
     }
   </script>

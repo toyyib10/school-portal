@@ -91,9 +91,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a style="color:rgb(48, 138, 163);" class="nav-link" href="#">
+            <a onclick="getInfo()"style="color:rgb(48, 138, 163);" class="nav-link" href="#">
               <span data-feather="shopping-cart" class="align-text-bottom"></span>
-                School Updates
+                Registered Students
             </a>
           </li>
           <li class="nav-item">
@@ -141,9 +141,24 @@
         <h1 style="color:rgb(48, 138, 163);" class="h2">School</h1>
       </div>
       <div>
+        <div id="t">
+
+        </div>
       </div>
     </main>
   </div>
 </div>
-  </body>
+<script>
+  var myInfo = []
+  function getInfo(){
+    myInfo = JSON.parse(localStorage.registeredInfo)
+    var tab = `<table  border="1" >`
+    for (let i = 0; i <myInfo.length; i++){
+      tab +=`<tr><td>${i + 1}</td><td>${myInfo[i].ftName}</td><td>${myInfo[i].ltName}</td><td>${myInfo[i].pNum}</td><td>${myInfo[i].dat}</td><td>${myInfo[i].em}</td><td>${myInfo[i].pWd}</td></tr>`
+    }
+    tab += `</table>`
+    t.innerHTML = tab;
+  }
+</script>
+</body>
 </html>
